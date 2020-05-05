@@ -32,12 +32,9 @@
           $language = $row['name'];
 
       }
-      $sql = "SELECT inventory.film_id,inventory.store_id,  count(inventory.inventory_id) AS number
+      $sql = "SELECT inventory.film_id,inventory.store_id,  sum(inventory.available) AS number
       FROM inventory
-      WHERE inventory.inventory_id NOT IN
-            (SELECT rental.inventory_id
-            FROM rental
-            WHERE rental.return_date IS NULL) AND film_id =".$filmid." AND store_id=1
+      WHERE film_id =".$filmid." AND store_id=1
       GROUP BY inventory.film_id,inventory.store_id";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
@@ -48,12 +45,9 @@
         else{
           $store1 = 0;
         }
-        $sql = "SELECT inventory.film_id,inventory.store_id,  count(inventory.inventory_id) AS number
+        $sql = "SELECT inventory.film_id,inventory.store_id,  sum(inventory.available) AS number
         FROM inventory
-        WHERE inventory.inventory_id NOT IN
-              (SELECT rental.inventory_id
-              FROM rental
-              WHERE rental.return_date IS NULL) AND film_id =".$filmid." AND store_id=2
+        WHERE film_id =".$filmid." AND store_id=2
         GROUP BY inventory.film_id,inventory.store_id";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
