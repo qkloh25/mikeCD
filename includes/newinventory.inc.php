@@ -18,7 +18,7 @@ if(isset($_POST["inventory-submit"])){
 
     }
     if ($result1==1){
-        echo "<script type='text/javascript'>alert('Insert Successfully!');window.location.href = '../newcustomer.php?insert=success';</script>";
+        echo "<script type='text/javascript'>alert('Insert Successfully!');window.location.href = '../profile.php?filmid=".$filmid."&insert=success';</script>";
         
         
     }else{
