@@ -16,13 +16,13 @@ if(isset($_POST["staff-submit"])){
     $password2 = $_POST['password2'];
     
     if(empty($firstname)||empty($lastname)||empty($email)||empty($phone)||empty($address)||empty($district)||empty($city)||empty($postalcode)){
-        echo "<script type='text/javascript'>alert('Please fill in all necessary fields!');window.location.href = '../newstafff.php?error=emptyfields';</script>";
+        echo "<script type='text/javascript'>alert('Please fill in all necessary fields!');window.location.href = '../newstaff.php?error=emptyfields';</script>";
     }
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         echo "<script type='text/javascript'>alert('Invalid Email!');window.location.href = '../newstaff.php?error=invalidemail';</script>";
     }
     else if($password !== $password2){
-        echo "<script type='text/javascript'>alert('Password Not Macthed!');window.location.href = '../newstafff.php?error=emptyfields';</script>";
+        echo "<script type='text/javascript'>alert('Password Not Macthed!');window.location.href = '../newstaff.php?error=emptyfields';</script>";
     }
     else { 
         $sql ="SELECT email,staff_id FROM staff WHERE email = '".$email."'";
